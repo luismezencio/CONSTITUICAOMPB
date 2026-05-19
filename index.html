@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
 
-        /* FUNDO BRANCO GLOBAL - SEM MODO NOTURNO */
+        /* FUNDO BRANCO FIXO - SEM MODO ESCURO */
         body {
             background: #ffffff !important;
             font-family: 'Times New Roman', 'Georgia', 'Cambria', serif;
@@ -20,7 +20,6 @@
             flex-direction: column;
             align-items: center;
             padding: 20px 0;
-            transition: all 0.2s ease;
         }
 
         /* BOTÃO DE ALTERNÂNCIA */
@@ -300,7 +299,12 @@
             font-size: 12px;
         }
 
-        /* ASSINATURAS COM IMAGENS MAIS LARGAS (RETANGULARES) */
+        /* ASSINATURAS COM IMAGENS MANTENDO PROPORÇÕES ORIGINAIS */
+        /* Proporções originais:
+           chicobuarque: 476x175 (2.72:1)
+           galcosta: 417x286 (1.46:1)
+           djavan: 377x209 (1.80:1)
+        */
         .assinaturas-finais {
             margin-top: 30px;
             padding-top: 20px;
@@ -309,37 +313,51 @@
             justify-content: space-around;
             align-items: flex-start;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
         }
         .assinatura-bloco {
             text-align: center;
             flex: 1;
-            min-width: 220px;
+            min-width: 200px;
         }
         .assinatura-foto {
             display: flex;
             justify-content: center;
             margin-bottom: 15px;
         }
-        .assinatura-foto img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border: 1px solid #ccc;
-            background: #f5f5f0;
-            display: block;
+        /* Cada imagem mantém sua proporção original */
+        .assinatura-foto img.djavan {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
         }
-        body.mobile-mode .assinatura-foto img {
-            width: 160px;
-            height: 120px;
+        .assinatura-foto img.chicobuarque {
+            width: 220px;
+            height: auto;
+            object-fit: contain;
+        }
+        .assinatura-foto img.galcosta {
+            width: 190px;
+            height: auto;
+            object-fit: contain;
+        }
+        /* Mobile */
+        body.mobile-mode .assinatura-foto img.djavan {
+            width: 140px;
+        }
+        body.mobile-mode .assinatura-foto img.chicobuarque {
+            width: 170px;
+        }
+        body.mobile-mode .assinatura-foto img.galcosta {
+            width: 150px;
         }
         .assinatura-linha {
-            width: 220px;
+            width: 200px;
             border-bottom: 1px solid #000;
             margin: 0 auto 8px auto;
         }
         body.mobile-mode .assinatura-linha {
-            width: 180px;
+            width: 160px;
         }
         .assinatura-nome {
             font-size: 16px;
@@ -698,7 +716,7 @@
             </div>
         </div>
 
-        <!-- PÁGINA 9: ASSINATURAS COM IMAGENS MAIS LARGAS (200x150) -->
+        <!-- PÁGINA 9: ASSINATURAS COM IMAGENS MANTENDO PROPORÇÕES ORIGINAIS -->
         <div class="pagina" id="assinaturas">
             <div class="conteudo-pagina">
                 <div class="texto-principal">
@@ -709,27 +727,30 @@
                     </div>
                     
                     <div class="assinaturas-finais">
+                        <!-- Djavan - proporção 377x209 (1.80:1) -->
                         <div class="assinatura-bloco">
                             <div class="assinatura-foto">
-                                <img src="djavan.png" alt="Djavan" onerror="this.style.display='none'">
+                                <img src="djavan.png" alt="Djavan" class="djavan" onerror="this.style.display='none'">
                             </div>
                             <div class="assinatura-linha"></div>
                             <div class="assinatura-nome">Djavan</div>
                             <div class="assinatura-cargo">Presidente da República Federativa Presidencialista da MPB</div>
                         </div>
                         
+                        <!-- Chico Buarque - proporção 476x175 (2.72:1) - mais larga -->
                         <div class="assinatura-bloco">
                             <div class="assinatura-foto">
-                                <img src="chicobuarque.png" alt="Chico Buarque" onerror="this.style.display='none'">
+                                <img src="chicobuarque.png" alt="Chico Buarque" class="chicobuarque" onerror="this.style.display='none'">
                             </div>
                             <div class="assinatura-linha"></div>
                             <div class="assinatura-nome">Chico Buarque</div>
                             <div class="assinatura-cargo">Presidente do Supremo Tribunal Harmônico</div>
                         </div>
                         
+                        <!-- Gal Costa - proporção 417x286 (1.46:1) - mais alta -->
                         <div class="assinatura-bloco">
                             <div class="assinatura-foto">
-                                <img src="galcosta.png" alt="Gal Costa" onerror="this.style.display='none'">
+                                <img src="galcosta.png" alt="Gal Costa" class="galcosta" onerror="this.style.display='none'">
                             </div>
                             <div class="assinatura-linha"></div>
                             <div class="assinatura-nome">Gal Costa</div>
