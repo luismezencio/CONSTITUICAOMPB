@@ -13,12 +13,16 @@
 
         body {
             background: #e0dcd3;
-            font-family: 'Times New Roman', Georgia, 'Cambria', serif;
-            color: #000;
+            font-family: 'Times New Roman', 'Georgia', 'Cambria', serif;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
             transition: all 0.2s ease;
         }
 
-        /* Botão de alternância */
+        /* BOTÃO DE ALTERNÂNCIA */
         .toggle-container {
             position: fixed;
             top: 20px;
@@ -31,7 +35,7 @@
         }
         .toggle-btn {
             background: #000;
-            color: #fff;
+            color: white;
             border: none;
             padding: 8px 22px;
             border-radius: 30px;
@@ -40,6 +44,7 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .toggle-btn:hover { opacity: 0.85; }
 
         .paginas-container {
             display: flex;
@@ -48,50 +53,33 @@
             width: 100%;
         }
 
-        /* Estilos base das páginas (desktop e mobile) */
+        /* ESTILO DAS PÁGINAS - DESKTOP */
         .pagina {
             background: white;
+            margin: 20px auto;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             page-break-after: always;
             break-inside: avoid;
-        }
-
-        /* Desktop padrão */
-        body:not(.mobile-mode) .pagina {
-            width: 1100px;
-            min-height: 1550px;
-            margin: 20px auto;
-        }
-        body:not(.mobile-mode) .conteudo-pagina {
-            padding: 2rem 2.5rem;
-            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            width: 794px;
+            min-height: 1123px;
         }
 
-        /* Mobile */
+        /* MOBILE */
         body.mobile-mode .pagina {
             width: 100%;
-            min-height: 85vh;
-            margin: 0 0 10px 0;
-            border-bottom: 1px solid #ccc;
+            max-width: 100%;
+            min-height: auto;
+            margin: 12px 0;
+            box-shadow: none;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 20px;
         }
         body.mobile-mode {
             background: #fff;
             padding: 0;
-        }
-        body.mobile-mode .conteudo-pagina {
-            padding: 1.2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
         }
         body.mobile-mode .toggle-container {
             position: sticky;
@@ -103,32 +91,55 @@
             margin-right: 12px;
         }
 
-        /* Capas: ocupam toda a página sem numeração */
+        /* CAPAS */
         .capa-imagem {
             width: 100%;
             height: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             background: white;
+            flex: 1;
         }
         .capa-imagem img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        body:not(.mobile-mode) .capa-imagem {
-            min-height: 1550px;
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
         }
 
-        /* Rodapé com numeração */
+        /* CONTEÚDO TEXTUAL */
+        .conteudo-pagina {
+            padding: 50px 60px 40px 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: white;
+        }
+        body.mobile-mode .conteudo-pagina {
+            padding: 20px 16px;
+        }
+
+        .texto-principal {
+            flex: 1;
+        }
+
+        /* RODAPÉ COM NUMERAÇÃO */
         .rodape-numero {
-            margin-top: 1.2rem;
-            padding-top: 0.5rem;
+            margin-top: 30px;
+            padding-top: 12px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 14px;
+            font-family: 'Times New Roman', serif;
             border-top: 2px solid #000;
+            color: #000;
             font-weight: bold;
+        }
+        body.mobile-mode .rodape-numero {
+            font-size: 12px;
+            margin-top: 20px;
+            padding-top: 10px;
         }
 
         /* Páginas sem numeração (capas) */
@@ -138,532 +149,699 @@
 
         /* SUMÁRIO */
         .sumario {
-            margin-bottom: 2rem;
+            margin: 0 0 25px 0;
         }
         .sumario h2 {
-            font-size: 1.8rem;
+            font-size: 24px;
             text-transform: uppercase;
+            font-weight: bold;
             text-align: center;
-            margin: 0.5rem 0 1.5rem;
-            border-bottom: 2px solid #000;
+            margin: 10px 0 25px 0;
+            border-bottom: 3px solid #000;
             display: inline-block;
             width: auto;
-            padding-bottom: 0.3rem;
+            letter-spacing: 1.5px;
+            padding-bottom: 8px;
+        }
+        body.mobile-mode .sumario h2 {
+            font-size: 20px;
         }
         .sumario-lista {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 10px;
+            margin-top: 15px;
         }
         .sumario-item {
             display: flex;
             justify-content: space-between;
-            font-size: 1.1rem;
-            border-bottom: 0.5px dotted #aaa;
-            padding: 0.2rem 0;
+            align-items: baseline;
+            font-size: 16px;
+            font-family: 'Times New Roman', serif;
+            padding: 5px 0;
+            border-bottom: 1px dotted #aaa;
+            width: 100%;
+        }
+        body.mobile-mode .sumario-item {
+            font-size: 14px;
         }
         .sumario-item a {
             text-decoration: none;
             color: #000;
+            flex: 1;
+            padding-right: 15px;
         }
         .sumario-item a:hover {
             text-decoration: underline;
         }
-
-        /* Títulos */
-        h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin: 0.5rem 0 1rem;
-            text-transform: uppercase;
+        .sumario-item span {
+            font-weight: bold;
+            white-space: nowrap;
         }
-        .titulo-principal {
-            font-size: 1.6rem;
+
+        /* TÍTULOS UNIFICADOS */
+        h1 {
+            font-size: 22px;
+            text-align: center;
+            margin: 15px 0 18px;
             font-weight: bold;
             text-transform: uppercase;
-            margin: 1rem 0 0.8rem;
+            line-height: 1.3;
+        }
+        body.mobile-mode h1 {
+            font-size: 18px;
+        }
+        .titulo-principal {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 25px 0 15px 0;
             border-bottom: 2px solid #000;
             display: inline-block;
-            padding-bottom: 0.2rem;
+            padding-bottom: 5px;
+        }
+        body.mobile-mode .titulo-principal {
+            font-size: 16px;
         }
         .composicao-label {
-            font-size: 1.2rem;
+            font-size: 15px;
             font-weight: 700;
-            margin: 1rem 0 0.4rem;
+            margin: 18px 0 10px 0;
             display: block;
         }
-
-        /* Texto padrão */
-        .artigo-texto, .paragrafo-item, .inciso-item, .paragrafo-unico, .preambulo {
-            font-size: 1rem;
-            text-align: justify;
-            line-height: 1.4;
-            margin-bottom: 0.3rem;
+        body.mobile-mode .composicao-label {
+            font-size: 14px;
         }
-        .paragrafo-item, .inciso-item, .paragrafo-unico {
-            margin-left: 1.5rem;
+
+        /* Artigos e textos */
+        .artigo-texto {
+            font-size: 14px;
+            text-align: justify;
+            display: block;
+            margin: 8px 0 4px 0;
+            line-height: 1.6;
+        }
+        body.mobile-mode .artigo-texto {
+            font-size: 13px;
+        }
+        .paragrafo-item, .inciso-item {
+            font-size: 14px;
+            margin-left: 25px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            display: block;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .paragrafo-unico {
+            font-size: 14px;
+            margin-left: 25px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            display: block;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        body.mobile-mode .paragrafo-item,
+        body.mobile-mode .inciso-item,
+        body.mobile-mode .paragrafo-unico {
+            font-size: 13px;
+            margin-left: 18px;
         }
         .preambulo {
-            margin: 0.8rem 0;
-            padding: 0.8rem;
-            border-left: 3px solid #aaa;
+            margin: 15px 0 20px;
+            padding: 15px 18px;
+            background: transparent;
+            border-left: 4px solid #aaa;
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        body.mobile-mode .preambulo {
+            font-size: 13px;
+            padding: 12px 14px;
+        }
+        hr {
+            margin: 18px 0;
+            border: none;
+            border-top: 1px solid #ccc;
         }
         .assinatura {
-            margin-top: 1.2rem;
+            margin-top: 25px;
             text-align: center;
-            font-size: 1rem;
+            font-size: 14px;
             border-top: 1px solid #000;
-            padding-top: 1rem;
+            padding-top: 20px;
+            line-height: 1.5;
         }
+        body.mobile-mode .assinatura {
+            font-size: 12px;
+        }
+
+        /* ASSINATURAS PERSONALIZADAS COM IMAGENS */
+        .assinaturas-finais {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #000;
+        }
+        .assinatura-bloco {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .assinatura-bloco:last-child {
+            margin-bottom: 0;
+        }
+        .assinatura-foto {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .assinatura-foto img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            background: #f5f5f0;
+        }
+        body.mobile-mode .assinatura-foto img {
+            width: 80px;
+            height: 80px;
+        }
+        .assinatura-linha {
+            width: 250px;
+            border-bottom: 1px solid #000;
+            margin: 0 auto 8px auto;
+        }
+        body.mobile-mode .assinatura-linha {
+            width: 200px;
+        }
+        .assinatura-nome {
+            font-size: 16px;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+        body.mobile-mode .assinatura-nome {
+            font-size: 14px;
+        }
+        .assinatura-cargo {
+            font-size: 13px;
+            color: #333;
+        }
+        body.mobile-mode .assinatura-cargo {
+            font-size: 11px;
+        }
+
+        /* FORMULÁRIO DE SUGESTÕES */
         .sugestoes-area {
-            margin-top: 1rem;
-            padding: 1rem;
+            margin-top: 20px;
+            padding: 20px;
             background: #f5f5f0;
             border: 1px solid #ccc;
         }
         .sugestoes-area h3 {
-            font-size: 1.2rem;
+            font-size: 18px;
+            margin-bottom: 15px;
             text-align: center;
-            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        body.mobile-mode .sugestoes-area h3 {
+            font-size: 16px;
         }
         .form-group {
-            margin-bottom: 0.8rem;
+            margin-bottom: 12px;
         }
         .form-group label {
             display: block;
             font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        body.mobile-mode .form-group label {
+            font-size: 13px;
         }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 0.5rem;
-            font-family: inherit;
-            font-size: 0.9rem;
+            padding: 10px;
+            font-family: 'Times New Roman', serif;
+            font-size: 14px;
             border: 1px solid #999;
             background: white;
+        }
+        body.mobile-mode .form-group input,
+        body.mobile-mode .form-group textarea,
+        body.mobile-mode .form-group select {
+            font-size: 13px;
+            padding: 8px;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
         }
         .btn-enviar {
             background: #000;
             color: white;
             border: none;
-            padding: 8px;
-            font-size: 0.9rem;
+            padding: 12px 24px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
+            font-family: 'Times New Roman', serif;
             width: 100%;
         }
+        .btn-enviar:hover {
+            background: #333;
+        }
         .mensagem-retorno {
-            margin-top: 0.5rem;
+            margin-top: 12px;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 13px;
+            color: #006600;
         }
 
-        @media (max-width: 1200px) and (min-width: 769px) {
-            body:not(.mobile-mode) .pagina {
-                width: 95%;
-                min-height: 1400px;
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .pagina {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+            .toggle-container {
+                display: none;
+            }
+            .sugestoes-area {
+                break-inside: avoid;
             }
         }
     </style>
 </head>
 <body>
-<div class="toggle-container">
-    <button class="toggle-btn" id="modoToggle">📱 Modo Mobile</button>
-</div>
-
-<div class="paginas-container" id="paginasContainer">
-    <!-- CAPA 1 (página física 1, sem numeração) -->
-    <div class="pagina sem-numeracao">
-        <div class="capa-imagem">
-            <img src="capa1.PNG" alt="Capa 1">
-        </div>
+    <div class="toggle-container">
+        <button class="toggle-btn" id="modoToggle">📱 Modo Mobile</button>
     </div>
-    <!-- CAPA 2 (página física 2, sem numeração) -->
-    <div class="pagina sem-numeracao">
-        <div class="capa-imagem">
-            <img src="capa2.jpeg" alt="Capa 2">
+    
+    <div class="paginas-container" id="paginasContainer">
+        <!-- CAPA 1 (sem numeração) -->
+        <div class="pagina sem-numeracao">
+            <div class="capa-imagem">
+                <img src="capa1.PNG" alt="Capa 1 - Constituição Geral das Composições Populares Brasileiras">
+            </div>
         </div>
-    </div>
-    <!-- As demais páginas serão geradas dinamicamente pelo JavaScript -->
-</div>
 
-<!-- Modelo de conteúdo oculto que será paginado -->
-<div id="fullContent" style="display: none;">
-    <!-- Sumário será inserido como conteúdo da primeira página de texto (página 3) -->
-    <div id="sumarioContainer">
-        <div class="sumario">
-            <div style="text-align: center;"><h2>SUMÁRIO</h2></div>
-            <div class="sumario-lista">
-                <div class="sumario-item"><a href="#preambulo">PREÂMBULO</a><span>3</span></div>
-                <div class="sumario-item"><a href="#tituloI">TÍTULO I – DOS PRINCÍPIOS FUNDAMENTAIS</a><span>3</span></div>
-                <div class="sumario-item"><a href="#tituloII">TÍTULO II – DOS DIREITOS E GARANTIAS FUNDAMENTAIS</a><span>4</span></div>
-                <div class="sumario-item"><a href="#tituloIII">TÍTULO III – DA ORGANIZAÇÃO DO ESTADO</a><span>5</span></div>
-                <div class="sumario-item"><a href="#tituloIV">TÍTULO IV – DA CULTURA E DO PATRIMÔNIO MUSICAL</a><span>6</span></div>
-                <div class="sumario-item"><a href="#tituloV">TÍTULO V – DAS DISPOSIÇÕES GERAIS</a><span>7</span></div>
-                <div class="sumario-item"><a href="#assinaturas">ASSINATURAS OFICIAIS</a><span>8</span></div>
-                <div class="sumario-item"><a href="#sugestoes">ESPAÇO PARA SUGESTÕES LEGISLATIVAS</a><span>9</span></div>
+        <!-- CAPA 2 (sem numeração) -->
+        <div class="pagina sem-numeracao">
+            <div class="capa-imagem">
+                <img src="capa2.jpeg" alt="Capa 2 - Constituição Geral das Composições Populares Brasileiras">
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: SUMÁRIO -->
+        <div class="pagina" id="pagina-sumario">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="sumario">
+                        <div style="text-align: center;"><h2>SUMÁRIO</h2></div>
+                        <div class="sumario-lista">
+                            <div class="sumario-item"><a href="#preambulo">PREÂMBULO</a><span>4</span></div>
+                            <div class="sumario-item"><a href="#tituloI">TÍTULO I – DOS PRINCÍPIOS FUNDAMENTAIS</a><span>4</span></div>
+                            <div class="sumario-item"><a href="#tituloII">TÍTULO II – DOS DIREITOS E GARANTIAS FUNDAMENTAIS</a><span>5</span></div>
+                            <div class="sumario-item"><a href="#tituloIII">TÍTULO III – DA ORGANIZAÇÃO DO ESTADO</a><span>6</span></div>
+                            <div class="sumario-item"><a href="#tituloIV">TÍTULO IV – DA CULTURA E DO PATRIMÔNIO MUSICAL</a><span>8</span></div>
+                            <div class="sumario-item"><a href="#tituloV">TÍTULO V – DAS DISPOSIÇÕES GERAIS</a><span>8</span></div>
+                            <div class="sumario-item"><a href="#assinaturas">ASSINATURAS</a><span>9</span></div>
+                            <div class="sumario-item"><a href="#sugestoes">ESPAÇO PARA SUGESTÕES LEGISLATIVAS</a><span>10</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rodape-numero">3</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: PREÂMBULO E TÍTULO I -->
+        <div class="pagina" id="preambulo">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <h1>CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA PRESIDENCIALISTA DA MPB</h1>
+                    <div class="titulo-principal">PREÂMBULO</div>
+                    <div class="preambulo">
+                        Nós, representantes do povo da República Federativa Presidencialista da MPB, reunidos em Assembleia Nacional Constituinte, inspirados nos princípios da democracia, da soberania popular, da liberdade artística e da diversidade cultural brasileira, promulgamos a presente Constituição Musical.<br><br>
+                        Fundada nos ideais de harmonia, participação popular e valorização da Música Popular Brasileira, esta Constituição estabelece um Estado democrático destinado a assegurar os direitos sociais, culturais e políticos da população, garantindo a separação dos poderes, a dignidade humana e a promoção da cultura como instrumento de cidadania.<br><br>
+                        Sob o lema "Ordem, Progresso e Música", instituímos um Estado pautado pela justiça social, pela liberdade de expressão e pelo reconhecimento da arte como patrimônio essencial da nação.
+                    </div>
+                    
+                    <div class="titulo-principal" id="tituloI">TÍTULO I – DOS PRINCÍPIOS FUNDAMENTAIS</div>
+                    
+                    <div class="composicao-label">Composição Legislativa Preliminar</div>
+                    <span class="artigo-texto"><strong>Art. 1º</strong> A República Federativa Presidencialista da MPB adota como forma de Estado a Federação, como forma de governo a República e como sistema de governo o Presidencialismo.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> A Federação organiza-se pela união indissolúvel das Partituras e Bemóis.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> A República fundamenta-se na soberania popular e na eleição periódica dos representantes do povo.</span>
+                    <span class="paragrafo-item"><strong>§3º</strong> O Presidencialismo estabelece o Presidente da República como Chefe de Estado e Chefe de Governo.</span>
+                    <span class="paragrafo-item"><strong>§4º</strong> O mandato presidencial será exercido conforme os princípios democráticos estabelecidos nesta Constituição.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 0</div>
+                    <span class="artigo-texto"><strong>Art. 1º-A</strong> O sistema eleitoral da República fundamenta-se na participação popular, na liberdade democrática e na valorização da cultura nacional.</span>
+                    <span class="inciso-item"><strong>I</strong> – o processo eleitoral será inspirado simbolicamente na estrutura do Hino Nacional da República;</span>
+                    <span class="inciso-item"><strong>II</strong> – cada etapa eleitoral representará um compasso da manifestação democrática popular;</span>
+                    <span class="inciso-item"><strong>III</strong> – os períodos eleitorais serão chamados de Festivais Democráticos;</span>
+                    <span class="inciso-item"><strong>IV</strong> – debates eleitorais deverão garantir igualdade de participação entre os candidatos;</span>
+                    <span class="inciso-item"><strong>V</strong> – campanhas eleitorais deverão incentivar manifestações culturais e artísticas populares.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O voto é universal, direto, secreto e periódico.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O Estado garantirá ampla participação popular nos processos políticos e eleitorais.</span>
+                </div>
+                <div class="rodape-numero">4</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 5 -->
+        <div class="pagina" id="tituloII">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="composicao-label">Composição Legislativa nº 1</div>
+                    <span class="artigo-texto"><strong>Art. 1º</strong> A República Federativa Presidencialista da MPB constitui-se em Estado Democrático de Direito e tem como fundamentos:</span>
+                    <span class="inciso-item"><strong>I</strong> – a soberania popular;</span>
+                    <span class="inciso-item"><strong>II</strong> – a cidadania;</span>
+                    <span class="inciso-item"><strong>III</strong> – a dignidade da pessoa humana;</span>
+                    <span class="inciso-item"><strong>IV</strong> – os valores sociais da cultura e da arte;</span>
+                    <span class="inciso-item"><strong>V</strong> – o pluralismo cultural;</span>
+                    <span class="inciso-item"><strong>VI</strong> – a Música Popular Brasileira como patrimônio nacional.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> Todo poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos desta Constituição.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 2</div>
+                    <span class="artigo-texto"><strong>Art. 2º</strong> São poderes da União, independentes e harmônicos entre si:</span>
+                    <span class="inciso-item"><strong>I</strong> – o Legislativo;</span>
+                    <span class="inciso-item"><strong>II</strong> – o Executivo;</span>
+                    <span class="inciso-item"><strong>III</strong> – o Judiciário.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> Nenhum poder poderá concentrar competências que comprometam o equilíbrio institucional da República.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> Os poderes atuarão em cooperação para garantir a harmonia social e a estabilidade democrática.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 3</div>
+                    <span class="artigo-texto"><strong>Art. 3º</strong> Constituem objetivos fundamentais da República:</span>
+                    <span class="inciso-item"><strong>I</strong> – construir uma sociedade livre, justa, democrática e culturalmente acessível;</span>
+                    <span class="inciso-item"><strong>II</strong> – promover o acesso universal à arte, à educação e à cultura;</span>
+                    <span class="inciso-item"><strong>III</strong> – reduzir desigualdades sociais, regionais e culturais;</span>
+                    <span class="inciso-item"><strong>IV</strong> – preservar a diversidade musical brasileira;</span>
+                    <span class="inciso-item"><strong>V</strong> – incentivar a criatividade, a produção artística e a participação popular.</span>
+                    
+                    <div class="titulo-principal">TÍTULO II – DOS DIREITOS E GARANTIAS FUNDAMENTAIS</div>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 4</div>
+                    <span class="artigo-texto"><strong>Art. 4º</strong> São garantidos a todos os cidadãos:</span>
+                    <span class="inciso-item"><strong>I</strong> – a liberdade de expressão artística, intelectual e cultural;</span>
+                    <span class="inciso-item"><strong>II</strong> – o acesso universal à cultura;</span>
+                    <span class="inciso-item"><strong>III</strong> – o direito à manifestação musical em espaços públicos, respeitados os limites da convivência social;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a livre produção e divulgação artística;</span>
+                    <span class="inciso-item"><strong>V</strong> – a proteção das manifestações culturais regionais.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> Nenhuma expressão artística poderá sofrer censura de natureza política, ideológica ou cultural.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O Estado protegerá artistas independentes e produções culturais populares.</span>
+                </div>
+                <div class="rodape-numero">5</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 6 -->
+        <div class="pagina" id="tituloIII">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="composicao-label">Composição Legislativa nº 5</div>
+                    <span class="artigo-texto"><strong>Art. 5º</strong> A educação constitui direito de todos e dever do Estado.</span>
+                    <span class="inciso-item"><strong>I</strong> – a educação musical será componente essencial da formação cidadã;</span>
+                    <span class="inciso-item"><strong>II</strong> – o ensino público incentivará o conhecimento da Música Popular Brasileira e das culturas regionais;</span>
+                    <span class="inciso-item"><strong>III</strong> – o Estado garantirá acesso gratuito a instrumentos musicais e atividades culturais em instituições públicas.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> As escolas públicas deverão promover festivais, saraus e atividades culturais voltadas à integração social.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 6</div>
+                    <span class="artigo-texto"><strong>Art. 6º</strong> A saúde é direito social fundamental.</span>
+                    <span class="inciso-item"><strong>I</strong> – o Estado promoverá programas de musicoterapia na rede pública de saúde;</span>
+                    <span class="inciso-item"><strong>II</strong> – hospitais, centros terapêuticos e instituições de acolhimento poderão utilizar práticas artísticas como instrumento complementar de tratamento;</span>
+                    <span class="inciso-item"><strong>III</strong> – políticas públicas incentivarão o bem-estar social por meio da arte e da cultura.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 7</div>
+                    <span class="artigo-texto"><strong>Art. 7º</strong> Todos têm direito ao meio ambiente ecologicamente equilibrado e sonoramente harmonioso.</span>
+                    <span class="inciso-item"><strong>I</strong> – o Estado combaterá a poluição sonora;</span>
+                    <span class="inciso-item"><strong>II</strong> – eventos culturais deverão respeitar limites de convivência urbana;</span>
+                    <span class="inciso-item"><strong>III</strong> – serão incentivadas práticas sustentáveis em produções artísticas e eventos públicos.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> O patrimônio sonoro e cultural brasileiro será protegido pelo Estado.</span>
+                    
+                    <div class="titulo-principal">TÍTULO III – DA ORGANIZAÇÃO DO ESTADO</div>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 7-A</div>
+                    <span class="artigo-texto"><strong>Art. 7º-A</strong> A República organiza-se sob regime federativo, assegurando autonomia política, administrativa e cultural às Partituras.</span>
+                    <span class="inciso-item"><strong>I</strong> – cada Partitura poderá preservar suas manifestações culturais próprias;</span>
+                    <span class="inciso-item"><strong>II</strong> – os Bemóis possuirão autonomia administrativa local;</span>
+                    <span class="inciso-item"><strong>III</strong> – a União coordenará políticas nacionais voltadas à integração cultural e social.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> Nenhuma Partitura poderá romper a unidade federativa da República.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> A autonomia federativa observará os princípios desta Constituição.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 7-B</div>
+                    <span class="artigo-texto"><strong>Art. 7º-B</strong> O Presidente da República exercerá:</span>
+                    <span class="inciso-item"><strong>I</strong> – a chefia de Estado;</span>
+                    <span class="inciso-item"><strong>II</strong> – a chefia de Governo;</span>
+                    <span class="inciso-item"><strong>III</strong> – a coordenação da administração federal;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a representação nacional perante outras nações.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O Presidente será eleito pelo voto popular direto.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O exercício presidencial deverá respeitar os princípios democráticos, constitucionais e culturais da República.</span>
+                </div>
+                <div class="rodape-numero">6</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 7 -->
+        <div class="pagina">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="composicao-label">Composição Legislativa nº 8</div>
+                    <span class="artigo-texto"><strong>Art. 8º</strong> A organização político-administrativa da República compreende:</span>
+                    <span class="inciso-item"><strong>I</strong> – a União;</span>
+                    <span class="inciso-item"><strong>II</strong> – as Partituras;</span>
+                    <span class="inciso-item"><strong>III</strong> – os Bemóis.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> As Partituras constituem unidades federativas autônomas.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> Os Bemóis correspondem às divisões municipais responsáveis pela administração local.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 9</div>
+                    <span class="artigo-texto"><strong>Art. 9º</strong> A capital federal é Salvador, reconhecida como Clave da Música Estatal.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> A capital simboliza a diversidade cultural brasileira e a valorização histórica da Música Popular Brasileira.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 9-A</div>
+                    <span class="artigo-texto"><strong>Art. 9º-A</strong> O Poder Legislativo será exercido pela Assembleia Nacional das Composições.</span>
+                    <span class="inciso-item"><strong>I</strong> – compete ao Legislativo elaborar as Composições Legislativas;</span>
+                    <span class="inciso-item"><strong>II</strong> – os representantes serão eleitos democraticamente pelo povo;</span>
+                    <span class="inciso-item"><strong>III</strong> – as sessões legislativas poderão incorporar manifestações culturais e musicais nacionais.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 9-B</div>
+                    <span class="artigo-texto"><strong>Art. 9º-B</strong> O Poder Judiciário garantirá a preservação da ordem constitucional e dos direitos fundamentais.</span>
+                    <span class="inciso-item"><strong>I</strong> – compete ao Judiciário assegurar a harmonia institucional entre os poderes;</span>
+                    <span class="inciso-item"><strong>II</strong> – o Supremo Tribunal Harmônico constitui a instância máxima da Justiça Republicana;</span>
+                    <span class="inciso-item"><strong>III</strong> – nenhum cidadão será privado de seus direitos culturais e políticos sem o devido processo legal.</span>
+                </div>
+                <div class="rodape-numero">7</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 8: TÍTULO IV E V -->
+        <div class="pagina" id="tituloIV">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="titulo-principal">TÍTULO IV – DA CULTURA E DO PATRIMÔNIO MUSICAL</div>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 10</div>
+                    <span class="artigo-texto"><strong>Art. 10.</strong> A Música Popular Brasileira constitui patrimônio imaterial da República.</span>
+                    <span class="inciso-item"><strong>I</strong> – o Estado promoverá políticas de preservação cultural;</span>
+                    <span class="inciso-item"><strong>II</strong> – ritmos regionais serão reconhecidos como expressões fundamentais da identidade nacional;</span>
+                    <span class="inciso-item"><strong>III</strong> – espaços culturais públicos deverão garantir acesso democrático à população.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O Estado incentivará festivais, apresentações populares e manifestações culturais tradicionais.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> Nenhuma manifestação cultural brasileira poderá sofrer discriminação.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 10-A</div>
+                    <span class="artigo-texto"><strong>Art. 10-A</strong> O Estado incentivará a democratização dos meios de produção cultural.</span>
+                    <span class="inciso-item"><strong>I</strong> – artistas independentes terão proteção institucional;</span>
+                    <span class="inciso-item"><strong>II</strong> – espaços públicos deverão promover acesso gratuito à cultura;</span>
+                    <span class="inciso-item"><strong>III</strong> – políticas públicas estimularão manifestações culturais regionais.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 10-B</div>
+                    <span class="artigo-texto"><strong>Art. 10-B</strong> Constituem deveres culturais do Estado:</span>
+                    <span class="inciso-item"><strong>I</strong> – preservar arquivos históricos musicais;</span>
+                    <span class="inciso-item"><strong>II</strong> – incentivar pesquisas sobre a Música Popular Brasileira;</span>
+                    <span class="inciso-item"><strong>III</strong> – promover intercâmbio cultural entre as Partituras;</span>
+                    <span class="inciso-item"><strong>IV</strong> – valorizar compositores, intérpretes e artistas populares.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 11</div>
+                    <span class="artigo-texto"><strong>Art. 11.</strong> O Estado fomentará:</span>
+                    <span class="inciso-item"><strong>I</strong> – a criação artística independente;</span>
+                    <span class="inciso-item"><strong>II</strong> – programas de incentivo à produção musical;</span>
+                    <span class="inciso-item"><strong>III</strong> – a democratização do acesso à arte;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a preservação da memória musical nacional.</span>
+                    
+                    <div class="titulo-principal" id="tituloV">TÍTULO V – DAS DISPOSIÇÕES GERAIS</div>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 12</div>
+                    <span class="artigo-texto"><strong>Art. 12.</strong> O lema nacional da República é "Ordem, Progresso e Música".</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> O lema representa a união entre estabilidade institucional, desenvolvimento social e valorização cultural.</span>
+                    
+                    <div class="composicao-label">Composição Legislativa nº 13</div>
+                    <span class="artigo-texto"><strong>Art. 13.</strong> Esta Constituição entra em vigor na data de sua promulgação.</span>
+                    
+                    <div class="assinatura">
+                        Sala das Composições Legislativas, Assembleia Nacional Constituinte da República Federativa Presidencialista da MPB.<br>
+                        Salvador, Clave da Música Estatal, ao som dos acordes da democracia popular.
+                    </div>
+                </div>
+                <div class="rodape-numero">8</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 9: ASSINATURAS COM FOTOS -->
+        <div class="pagina" id="assinaturas">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="titulo-principal">ASSINATURAS DOS REPRESENTANTES DA REPÚBLICA</div>
+                    
+                    <div class="preambulo" style="border-left-color: #000; margin-bottom: 30px;">
+                        Nos termos do Art. 1º desta Constituição, os representantes máximos dos Três Poderes da República Federativa Presidencialista da MPB, reunidos em sessão solene na Sala das Composições Legislativas, assinam e promulgam a presente Carta Magna, comprometendo-se a zelar pelos princípios democráticos, pela valorização da cultura brasileira e pela harmonia entre os poderes.
+                    </div>
+                    
+                    <div class="assinaturas-finais">
+                        <div class="assinatura-bloco">
+                            <div class="assinatura-foto">
+                                <img src="djavan" alt="Djavan" onerror="this.style.display='none'">
+                            </div>
+                            <div class="assinatura-linha"></div>
+                            <div class="assinatura-nome">Djavan</div>
+                            <div class="assinatura-cargo">Presidente da República Federativa Presidencialista da MPB</div>
+                        </div>
+                        
+                        <div class="assinatura-bloco">
+                            <div class="assinatura-foto">
+                                <img src="chicobuarque" alt="Chico Buarque" onerror="this.style.display='none'">
+                            </div>
+                            <div class="assinatura-linha"></div>
+                            <div class="assinatura-nome">Chico Buarque</div>
+                            <div class="assinatura-cargo">Presidente do Supremo Tribunal Harmônico</div>
+                        </div>
+                        
+                        <div class="assinatura-bloco">
+                            <div class="assinatura-foto">
+                                <img src="galcosta" alt="Gal Costa" onerror="this.style.display='none'">
+                            </div>
+                            <div class="assinatura-linha"></div>
+                            <div class="assinatura-nome">Gal Costa</div>
+                            <div class="assinatura-cargo">Presidente da Assembleia Nacional das Composições</div>
+                        </div>
+                    </div>
+                    
+                    <div class="assinatura" style="margin-top: 50px;">
+                        Promulgada em sessão solene na Sala das Composições Legislativas.<br>
+                        Salvador, Clave da Música Estatal.<br><br>
+                        <em>"Ordem, Progresso e Música"</em>
+                    </div>
+                </div>
+                <div class="rodape-numero">9</div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 10: ESPAÇO PARA SUGESTÕES -->
+        <div class="pagina" id="sugestoes">
+            <div class="conteudo-pagina">
+                <div class="texto-principal">
+                    <div class="titulo-principal">ESPAÇO PARA SUGESTÕES DE COMPOSIÇÕES LEGISLATIVAS</div>
+                    <div class="preambulo" style="border-left-color: #000; margin-bottom: 20px;">
+                        Nos termos do Art. 9º-A, a Assembleia Nacional das Composições recebe sugestões da sociedade para elaboração de novas Composições Legislativas. A participação popular é fundamento da República. Utilize o formulário abaixo para enviar sua proposta.
+                    </div>
+                    
+                    <div class="sugestoes-area">
+                        <h3>Participe da construção legislativa</h3>
+                        <form id="formSugestao">
+                            <div class="form-group">
+                                <label for="nome">Nome completo (opcional)</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail (para retorno)</label>
+                                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade">Cidade / Partitura</label>
+                                <input type="text" id="cidade" name="cidade" placeholder="Ex: Salvador / Clave da Música">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo de proposição</label>
+                                <select id="tipo" name="tipo">
+                                    <option value="nova_composicao">Nova Composição Legislativa</option>
+                                    <option value="emenda">Emenda / Alteração</option>
+                                    <option value="revogacao">Revogação parcial</option>
+                                    <option value="sugestao_cultural">Sugestão cultural/artística</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sugestao">Sua sugestão de Composição Legislativa ou proposta*</label>
+                                <textarea id="sugestao" name="sugestao" required placeholder="Descreva sua proposta de artigo, parágrafo, inciso ou nova composição..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="justificativa">Justificativa (fundamentação)</label>
+                                <textarea id="justificativa" name="justificativa" placeholder="Por que esta proposta fortalece a MPB, a democracia cultural ou os direitos fundamentais?"></textarea>
+                            </div>
+                            <button type="submit" class="btn-enviar">📩 Enviar sugestão à Assembleia Nacional das Composições</button>
+                            <div id="mensagemRetorno" class="mensagem-retorno"></div>
+                        </form>
+                        <p style="font-size: 12px; margin-top: 15px; text-align: center; color: #555;">As propostas serão encaminhadas à Comissão de Cultura e serão analisadas conforme o regimento da Assembleia.</p>
+                    </div>
+                    
+                    <div class="assinatura" style="margin-top: 20px; font-size: 13px;">
+                        Art. 9º-A, § único: "A participação popular nas decisões legislativas é instrumento fundamental da democracia participativa".
+                    </div>
+                </div>
+                <div class="rodape-numero">10</div>
             </div>
         </div>
     </div>
 
-    <!-- PREÂMBULO -->
-    <div id="preambulo">
-        <div class="titulo-principal">PREÂMBULO</div>
-        <div class="preambulo">
-            Nós, representantes do povo da República Federativa Presidencialista da MPB, reunidos em Assembleia Nacional Constituinte, inspirados nos princípios da democracia, da soberania popular, da liberdade artística e da diversidade cultural brasileira, promulgamos a presente Constituição Musical.<br><br>
-            Fundada nos ideais de harmonia, participação popular e valorização da Música Popular Brasileira, esta Constituição estabelece um Estado democrático destinado a assegurar os direitos sociais, culturais e políticos da população, garantindo a separação dos poderes, a dignidade humana e a promoção da cultura como instrumento de cidadania.<br><br>
-            Sob o lema “Ordem, Progresso e Música”, instituímos um Estado pautado pela justiça social, pela liberdade de expressão e pelo reconhecimento da arte como patrimônio essencial da nação.
-        </div>
-    </div>
-
-    <!-- TÍTULO I -->
-    <div id="tituloI">
-        <div class="titulo-principal">TÍTULO I – DOS PRINCÍPIOS FUNDAMENTAIS</div>
-        <div class="composicao-label">Composição Legislativa Preliminar</div>
-        <span class="artigo-texto"><strong>Art. 1º</strong> A República Federativa Presidencialista da MPB adota como forma de Estado a Federação, como forma de governo a República e como sistema de governo o Presidencialismo.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> A Federação organiza-se pela união indissolúvel das Partituras e Bemóis.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> A República fundamenta-se na soberania popular e na eleição periódica dos representantes do povo.</span>
-        <span class="paragrafo-item"><strong>§3º</strong> O Presidencialismo estabelece o Presidente da República como Chefe de Estado e Chefe de Governo.</span>
-        <span class="paragrafo-item"><strong>§4º</strong> O mandato presidencial será exercido conforme os princípios democráticos estabelecidos nesta Constituição.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 0</div>
-        <span class="artigo-texto"><strong>Art. 1º-A</strong> O sistema eleitoral da República fundamenta-se na participação popular, na liberdade democrática e na valorização da cultura nacional.</span>
-        <span class="inciso-item"><strong>I</strong> – o processo eleitoral será inspirado simbolicamente na estrutura do Hino Nacional da República;</span>
-        <span class="inciso-item"><strong>II</strong> – cada etapa eleitoral representará um compasso da manifestação democrática popular;</span>
-        <span class="inciso-item"><strong>III</strong> – os períodos eleitorais serão chamados de Festivais Democráticos;</span>
-        <span class="inciso-item"><strong>IV</strong> – debates eleitorais deverão garantir igualdade de participação entre os candidatos;</span>
-        <span class="inciso-item"><strong>V</strong> – campanhas eleitorais deverão incentivar manifestações culturais e artísticas populares.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> O voto é universal, direto, secreto e periódico.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> O Estado garantirá ampla participação popular nos processos políticos e eleitorais.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 1</div>
-        <span class="artigo-texto"><strong>Art. 1º</strong> A República Federativa Presidencialista da MPB constitui-se em Estado Democrático de Direito e tem como fundamentos:</span>
-        <span class="inciso-item"><strong>I</strong> – a soberania popular;</span>
-        <span class="inciso-item"><strong>II</strong> – a cidadania;</span>
-        <span class="inciso-item"><strong>III</strong> – a dignidade da pessoa humana;</span>
-        <span class="inciso-item"><strong>IV</strong> – os valores sociais da cultura e da arte;</span>
-        <span class="inciso-item"><strong>V</strong> – o pluralismo cultural;</span>
-        <span class="inciso-item"><strong>VI</strong> – a Música Popular Brasileira como patrimônio nacional.</span>
-        <span class="paragrafo-unico"><strong>Parágrafo único.</strong> Todo poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos desta Constituição.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 2</div>
-        <span class="artigo-texto"><strong>Art. 2º</strong> São poderes da União, independentes e harmônicos entre si:</span>
-        <span class="inciso-item"><strong>I</strong> – o Legislativo;</span>
-        <span class="inciso-item"><strong>II</strong> – o Executivo;</span>
-        <span class="inciso-item"><strong>III</strong> – o Judiciário.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> Nenhum poder poderá concentrar competências que comprometam o equilíbrio institucional da República.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> Os poderes atuarão em cooperação para garantir a harmonia social e a estabilidade democrática.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 3</div>
-        <span class="artigo-texto"><strong>Art. 3º</strong> Constituem objetivos fundamentais da República:</span>
-        <span class="inciso-item"><strong>I</strong> – construir uma sociedade livre, justa, democrática e culturalmente acessível;</span>
-        <span class="inciso-item"><strong>II</strong> – promover o acesso universal à arte, à educação e à cultura;</span>
-        <span class="inciso-item"><strong>III</strong> – reduzir desigualdades sociais, regionais e culturais;</span>
-        <span class="inciso-item"><strong>IV</strong> – preservar a diversidade musical brasileira;</span>
-        <span class="inciso-item"><strong>V</strong> – incentivar a criatividade, a produção artística e a participação popular.</span>
-    </div>
-
-    <!-- TÍTULO II -->
-    <div id="tituloII">
-        <div class="titulo-principal">TÍTULO II – DOS DIREITOS E GARANTIAS FUNDAMENTAIS</div>
-        <div class="composicao-label">Composição Legislativa nº 4</div>
-        <span class="artigo-texto"><strong>Art. 4º</strong> São garantidos a todos os cidadãos:</span>
-        <span class="inciso-item"><strong>I</strong> – a liberdade de expressão artística, intelectual e cultural;</span>
-        <span class="inciso-item"><strong>II</strong> – o acesso universal à cultura;</span>
-        <span class="inciso-item"><strong>III</strong> – o direito à manifestação musical em espaços públicos;</span>
-        <span class="inciso-item"><strong>IV</strong> – a livre produção e divulgação artística;</span>
-        <span class="inciso-item"><strong>V</strong> – a proteção das manifestações culturais regionais.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> Nenhuma expressão artística poderá sofrer censura de natureza política, ideológica ou cultural.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> O Estado protegerá artistas independentes e produções culturais populares.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 5</div>
-        <span class="artigo-texto"><strong>Art. 5º</strong> A educação constitui direito de todos e dever do Estado.</span>
-        <span class="inciso-item"><strong>I</strong> – a educação musical será componente essencial da formação cidadã;</span>
-        <span class="inciso-item"><strong>II</strong> – o ensino público incentivará o conhecimento da Música Popular Brasileira e das culturas regionais;</span>
-        <span class="inciso-item"><strong>III</strong> – o Estado garantirá acesso gratuito a instrumentos musicais e atividades culturais em instituições públicas.</span>
-        <span class="paragrafo-unico"><strong>Parágrafo único.</strong> As escolas públicas deverão promover festivais, saraus e atividades culturais voltadas à integração social.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 6</div>
-        <span class="artigo-texto"><strong>Art. 6º</strong> A saúde é direito social fundamental.</span>
-        <span class="inciso-item"><strong>I</strong> – o Estado promoverá programas de musicoterapia na rede pública de saúde;</span>
-        <span class="inciso-item"><strong>II</strong> – hospitais, centros terapêuticos e instituições de acolhimento poderão utilizar práticas artísticas como instrumento complementar de tratamento;</span>
-        <span class="inciso-item"><strong>III</strong> – políticas públicas incentivarão o bem-estar social por meio da arte e da cultura.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 7</div>
-        <span class="artigo-texto"><strong>Art. 7º</strong> Todos têm direito ao meio ambiente ecologicamente equilibrado e sonoramente harmonioso.</span>
-        <span class="inciso-item"><strong>I</strong> – o Estado combaterá a poluição sonora;</span>
-        <span class="inciso-item"><strong>II</strong> – eventos culturais deverão respeitar limites de convivência urbana;</span>
-        <span class="inciso-item"><strong>III</strong> – serão incentivadas práticas sustentáveis em produções artísticas e eventos públicos.</span>
-        <span class="paragrafo-unico"><strong>Parágrafo único.</strong> O patrimônio sonoro e cultural brasileiro será protegido pelo Estado.</span>
-    </div>
-
-    <!-- TÍTULO III -->
-    <div id="tituloIII">
-        <div class="titulo-principal">TÍTULO III – DA ORGANIZAÇÃO DO ESTADO</div>
-        <div class="composicao-label">Composição Legislativa nº 7-A</div>
-        <span class="artigo-texto"><strong>Art. 7º-A</strong> A República organiza-se sob regime federativo, assegurando autonomia política, administrativa e cultural às Partituras.</span>
-        <span class="inciso-item"><strong>I</strong> – cada Partitura poderá preservar suas manifestações culturais próprias;</span>
-        <span class="inciso-item"><strong>II</strong> – os Bemóis possuirão autonomia administrativa local;</span>
-        <span class="inciso-item"><strong>III</strong> – a União coordenará políticas nacionais voltadas à integração cultural e social.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> Nenhuma Partitura poderá romper a unidade federativa da República.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> A autonomia federativa observará os princípios desta Constituição.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 7-B</div>
-        <span class="artigo-texto"><strong>Art. 7º-B</strong> O Presidente da República exercerá:</span>
-        <span class="inciso-item"><strong>I</strong> – a chefia de Estado;</span>
-        <span class="inciso-item"><strong>II</strong> – a chefia de Governo;</span>
-        <span class="inciso-item"><strong>III</strong> – a coordenação da administração federal;</span>
-        <span class="inciso-item"><strong>IV</strong> – a representação nacional perante outras nações.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> O Presidente será eleito pelo voto popular direto.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> O exercício presidencial deverá respeitar os princípios democráticos, constitucionais e culturais da República.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 8</div>
-        <span class="artigo-texto"><strong>Art. 8º</strong> A organização político-administrativa da República compreende:</span>
-        <span class="inciso-item"><strong>I</strong> – a União;</span>
-        <span class="inciso-item"><strong>II</strong> – as Partituras;</span>
-        <span class="inciso-item"><strong>III</strong> – os Bemóis.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> As Partituras constituem unidades federativas autônomas.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> Os Bemóis correspondem às divisões municipais responsáveis pela administração local.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 9</div>
-        <span class="artigo-texto"><strong>Art. 9º</strong> A capital federal é Salvador, reconhecida como Clave da Música Estatal.</span>
-        <span class="paragrafo-unico"><strong>Parágrafo único.</strong> A capital simboliza a diversidade cultural brasileira e a valorização histórica da Música Popular Brasileira.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 9-A</div>
-        <span class="artigo-texto"><strong>Art. 9º-A</strong> O Poder Legislativo será exercido pela Assembleia Nacional das Composições.</span>
-        <span class="inciso-item"><strong>I</strong> – compete ao Legislativo elaborar as Composições Legislativas;</span>
-        <span class="inciso-item"><strong>II</strong> – os representantes serão eleitos democraticamente pelo povo;</span>
-        <span class="inciso-item"><strong>III</strong> – as sessões legislativas poderão incorporar manifestações culturais e musicais nacionais.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 9-B</div>
-        <span class="artigo-texto"><strong>Art. 9º-B</strong> O Poder Judiciário garantirá a preservação da ordem constitucional e dos direitos fundamentais.</span>
-        <span class="inciso-item"><strong>I</strong> – compete ao Judiciário assegurar a harmonia institucional entre os poderes;</span>
-        <span class="inciso-item"><strong>II</strong> – o Supremo Tribunal Harmônico constitui a instância máxima da Justiça Republicana;</span>
-        <span class="inciso-item"><strong>III</strong> – nenhum cidadão será privado de seus direitos culturais e políticos sem o devido processo legal.</span>
-    </div>
-
-    <!-- TÍTULO IV -->
-    <div id="tituloIV">
-        <div class="titulo-principal">TÍTULO IV – DA CULTURA E DO PATRIMÔNIO MUSICAL</div>
-        <div class="composicao-label">Composição Legislativa nº 10</div>
-        <span class="artigo-texto"><strong>Art. 10.</strong> A Música Popular Brasileira constitui patrimônio imaterial da República.</span>
-        <span class="inciso-item"><strong>I</strong> – o Estado promoverá políticas de preservação cultural;</span>
-        <span class="inciso-item"><strong>II</strong> – ritmos regionais serão reconhecidos como expressões fundamentais da identidade nacional;</span>
-        <span class="inciso-item"><strong>III</strong> – espaços culturais públicos deverão garantir acesso democrático à população.</span>
-        <span class="paragrafo-item"><strong>§1º</strong> O Estado incentivará festivais, apresentações populares e manifestações culturais tradicionais.</span>
-        <span class="paragrafo-item"><strong>§2º</strong> Nenhuma manifestação cultural brasileira poderá sofrer discriminação.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 10-A</div>
-        <span class="artigo-texto"><strong>Art. 10-A</strong> O Estado incentivará a democratização dos meios de produção cultural.</span>
-        <span class="inciso-item"><strong>I</strong> – artistas independentes terão proteção institucional;</span>
-        <span class="inciso-item"><strong>II</strong> – espaços públicos deverão promover acesso gratuito à cultura;</span>
-        <span class="inciso-item"><strong>III</strong> – políticas públicas estimularão manifestações culturais regionais.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 10-B</div>
-        <span class="artigo-texto"><strong>Art. 10-B</strong> Constituem deveres culturais do Estado:</span>
-        <span class="inciso-item"><strong>I</strong> – preservar arquivos históricos musicais;</span>
-        <span class="inciso-item"><strong>II</strong> – incentivar pesquisas sobre a Música Popular Brasileira;</span>
-        <span class="inciso-item"><strong>III</strong> – promover intercâmbio cultural entre as Partituras;</span>
-        <span class="inciso-item"><strong>IV</strong> – valorizar compositores, intérpretes e artistas populares.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 11</div>
-        <span class="artigo-texto"><strong>Art. 11.</strong> O Estado fomentará:</span>
-        <span class="inciso-item"><strong>I</strong> – a criação artística independente;</span>
-        <span class="inciso-item"><strong>II</strong> – programas de incentivo à produção musical;</span>
-        <span class="inciso-item"><strong>III</strong> – a democratização do acesso à arte;</span>
-        <span class="inciso-item"><strong>IV</strong> – a preservação da memória musical nacional.</span>
-    </div>
-
-    <!-- TÍTULO V -->
-    <div id="tituloV">
-        <div class="titulo-principal">TÍTULO V – DAS DISPOSIÇÕES GERAIS</div>
-        <div class="composicao-label">Composição Legislativa nº 12</div>
-        <span class="artigo-texto"><strong>Art. 12.</strong> O lema nacional da República é “Ordem, Progresso e Música”.</span>
-        <span class="paragrafo-unico"><strong>Parágrafo único.</strong> O lema representa a união entre estabilidade institucional, desenvolvimento social e valorização cultural.</span>
-        
-        <div class="composicao-label">Composição Legislativa nº 13</div>
-        <span class="artigo-texto"><strong>Art. 13.</strong> Esta Constituição entra em vigor na data de sua promulgação.</span>
-    </div>
-
-    <!-- Assinaturas -->
-    <div id="assinaturas">
-        <div class="titulo-principal">ASSINATURAS OFICIAIS</div>
-        <div class="assinatura">
-            Djavan<br>
-            <strong>Presidente da República</strong>
-        </div>
-        <div class="assinatura">
-            Chico Buarque<br>
-            <strong>Presidente do Supremo Tribunal Harmônico</strong>
-        </div>
-        <div class="assinatura">
-            Gal Costa<br>
-            <strong>Presidente da Assembleia Nacional das Composições</strong>
-        </div>
-        <div style="margin-top: 1rem; font-size: 0.8rem; text-align: center;">
-            Salvador, Clave da Música Estatal, ao som dos acordes da democracia popular.
-        </div>
-    </div>
-
-    <!-- Sugestões (página separada) -->
-    <div id="sugestoes">
-        <div class="titulo-principal">ESPAÇO PARA SUGESTÕES DE COMPOSIÇÕES LEGISLATIVAS</div>
-        <div class="preambulo" style="border-left-color: #000;">
-            Nos termos do Art. 9º-A, a Assembleia Nacional das Composições recebe sugestões da sociedade para elaboração de novas Composições Legislativas. A participação popular é fundamento da República.
-        </div>
-        <div class="sugestoes-area">
-            <h3>Participe da construção legislativa</h3>
-            <form id="formSugestao">
-                <div class="form-group"><label>Nome completo (opcional)</label><input type="text" id="nome"></div>
-                <div class="form-group"><label>E-mail (para retorno)</label><input type="email" id="email"></div>
-                <div class="form-group"><label>Cidade / Partitura</label><input type="text" id="cidade"></div>
-                <div class="form-group"><label>Tipo de proposição</label>
-                    <select id="tipo">
-                        <option>Nova Composição Legislativa</option>
-                        <option>Emenda / Alteração</option>
-                        <option>Revogação parcial</option>
-                        <option>Sugestão cultural/artística</option>
-                    </select>
-                </div>
-                <div class="form-group"><label>Sua sugestão*</label><textarea id="sugestao" required></textarea></div>
-                <div class="form-group"><label>Justificativa</label><textarea id="justificativa"></textarea></div>
-                <button type="submit" class="btn-enviar">📩 Enviar sugestão</button>
-                <div id="msgRetorno" class="mensagem-retorno"></div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Paginação dinâmica
-    function getPageHeight() {
-        if (document.body.classList.contains('mobile-mode')) {
-            // mobile: altura dinâmica definida pelo min-height do CSS (85vh)
-            return window.innerHeight * 0.85;
-        } else {
-            // desktop
-            return 1550; // mesmo valor do min-height no CSS
-        }
-    }
-
-    function paginate() {
-        const container = document.getElementById('paginasContainer');
-        // manter as capas (primeiros dois filhos) e remover o que vier depois (as páginas geradas anteriormente)
-        while (container.children.length > 2) {
-            container.removeChild(container.lastChild);
-        }
-
-        const fullContent = document.getElementById('fullContent');
-        const elementos = Array.from(fullContent.children); // cada seção: sumário, preâmbulo, títulos, etc.
-        
-        const pageHeightLimit = getPageHeight();
-        // altura disponível para texto: subtrair padding vertical do .conteudo-pagina (cerca de 2rem top + 2rem bottom = 4rem ~ 64px) + rodapé (40px)
-        const availableHeight = pageHeightLimit - 120; // valor empírico ajustado
-
-        let currentPageDiv = null;
-        let currentTextContainer = null;
-        let pageCounter = 3; // primeira página de texto será a de número 3 (sumário)
-
-        function createNewPage(pageNumber) {
-            const page = document.createElement('div');
-            page.className = 'pagina';
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'conteudo-pagina';
-            const textDiv = document.createElement('div');
-            textDiv.className = 'texto-principal';
-            contentDiv.appendChild(textDiv);
-            const rodape = document.createElement('div');
-            rodape.className = 'rodape-numero';
-            rodape.textContent = pageNumber.toString();
-            contentDiv.appendChild(rodape);
-            page.appendChild(contentDiv);
-            container.appendChild(page);
-            return { textDiv, contentDiv };
-        }
-
-        // criar a primeira página de texto (página 3)
-        let current = createNewPage(pageCounter);
-        let currentHeight = 0;
-        let currentTextDiv = current.textDiv;
-        let currentPageNumber = pageCounter;
-
-        for (let i = 0; i < elementos.length; i++) {
-            const el = elementos[i];
-            const clone = el.cloneNode(true);
-            // Medir altura aproximada do clone (sem anexar ao DOM)
-            const temp = document.createElement('div');
-            temp.style.position = 'absolute';
-            temp.style.top = '-9999px';
-            temp.style.width = getComputedStyle(document.querySelector('.pagina')).width;
-            temp.style.padding = '0';
-            temp.appendChild(clone);
-            document.body.appendChild(temp);
-            const alturaElemento = temp.offsetHeight;
-            document.body.removeChild(temp);
-
-            if (currentHeight + alturaElemento > availableHeight && currentTextDiv.children.length > 0) {
-                // precisa nova página
-                pageCounter++;
-                current = createNewPage(pageCounter);
-                currentTextDiv = current.textDiv;
-                currentHeight = 0;
-                currentTextDiv.appendChild(clone);
-                currentHeight += alturaElemento;
+    <script>
+        // Alternância mobile/desktop
+        (function() {
+            const toggleBtn = document.getElementById('modoToggle');
+            if(localStorage.getItem('mpbMode') === 'mobile') {
+                document.body.classList.add('mobile-mode');
+                toggleBtn.textContent = '🖥️ Modo Desktop';
             } else {
-                currentTextDiv.appendChild(clone);
-                currentHeight += alturaElemento;
+                document.body.classList.remove('mobile-mode');
+                toggleBtn.textContent = '📱 Modo Mobile';
             }
-        }
-    }
+            toggleBtn.addEventListener('click', function() {
+                if(document.body.classList.contains('mobile-mode')) {
+                    document.body.classList.remove('mobile-mode');
+                    localStorage.setItem('mpbMode', 'desktop');
+                    toggleBtn.textContent = '📱 Modo Mobile';
+                } else {
+                    document.body.classList.add('mobile-mode');
+                    localStorage.setItem('mpbMode', 'mobile');
+                    toggleBtn.textContent = '🖥️ Modo Desktop';
+                }
+                window.dispatchEvent(new Event('resize'));
+            });
+        })();
 
-    function refreshLayout() {
-        paginate();
-    }
-
-    // alternância mobile/desktop
-    const toggleBtn = document.getElementById('modoToggle');
-    function setMode() {
-        if (localStorage.getItem('mpbMode') === 'mobile') {
-            document.body.classList.add('mobile-mode');
-            toggleBtn.textContent = '🖥️ Modo Desktop';
-        } else {
-            document.body.classList.remove('mobile-mode');
-            toggleBtn.textContent = '📱 Modo Mobile';
-        }
-        refreshLayout();
-    }
-    setMode();
-
-    toggleBtn.addEventListener('click', () => {
-        if (document.body.classList.contains('mobile-mode')) {
-            document.body.classList.remove('mobile-mode');
-            localStorage.setItem('mpbMode', 'desktop');
-        } else {
-            document.body.classList.add('mobile-mode');
-            localStorage.setItem('mpbMode', 'mobile');
-        }
-        refreshLayout();
-    });
-
-    window.addEventListener('resize', () => { refreshLayout(); });
-
-    // Formulário de sugestões
-    const form = document.getElementById('formSugestao');
-    const msgDiv = document.getElementById('msgRetorno');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const sugestao = document.getElementById('sugestao').value.trim();
-        if (!sugestao) {
-            msgDiv.innerHTML = '❌ Escreva sua sugestão.';
-            msgDiv.style.color = '#c00';
-            return;
-        }
-        msgDiv.innerHTML = '✅ Sugestão enviada! Muito obrigado.';
-        msgDiv.style.color = '#060';
-        form.reset();
-        setTimeout(() => msgDiv.innerHTML = '', 4000);
-    });
-</script>
+        // Formulário de sugestões
+        const form = document.getElementById('formSugestao');
+        const msgDiv = document.getElementById('mensagemRetorno');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const sugestaoText = document.getElementById('sugestao').value.trim();
+            if(!sugestaoText) {
+                msgDiv.innerHTML = '❌ Por favor, escreva sua sugestão antes de enviar.';
+                msgDiv.style.color = '#cc0000';
+                return;
+            }
+            msgDiv.innerHTML = '✅ Sugestão recebida com sucesso! A Comissão de Cultura analisará sua proposta. Muito obrigado pela participação democrática.';
+            msgDiv.style.color = '#006600';
+            form.reset();
+            setTimeout(() => {
+                msgDiv.innerHTML = '';
+            }, 6000);
+        });
+    </script>
 </body>
 </html>
