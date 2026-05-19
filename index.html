@@ -11,8 +11,9 @@
             box-sizing: border-box;
         }
 
+        /* FUNDO BRANCO GLOBAL - SEM MODO NOTURNO */
         body {
-            background: #e0dcd3;
+            background: #ffffff !important;
             font-family: 'Times New Roman', 'Georgia', 'Cambria', serif;
             color: #000000;
             display: flex;
@@ -53,9 +54,9 @@
             width: 100%;
         }
 
-        /* ESTILO DAS PÁGINAS - DESKTOP */
+        /* ESTILO DAS PÁGINAS - DESKTOP - FUNDO BRANCO */
         .pagina {
-            background: white;
+            background: white !important;
             margin: 20px auto;
             position: relative;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -67,18 +68,19 @@
             min-height: 1123px;
         }
 
-        /* MOBILE */
+        /* MOBILE - FUNDO BRANCO */
         body.mobile-mode .pagina {
             width: 100%;
             max-width: 100%;
             min-height: auto;
             margin: 12px 0;
             box-shadow: none;
-            border-bottom: 2px solid #ccc;
+            border-bottom: 1px solid #ccc;
             padding-bottom: 20px;
+            background: white !important;
         }
         body.mobile-mode {
-            background: #fff;
+            background: white !important;
             padding: 0;
         }
         body.mobile-mode .toggle-container {
@@ -298,18 +300,21 @@
             font-size: 12px;
         }
 
-        /* ASSINATURAS PERSONALIZADAS COM IMAGENS RETANGULARES */
+        /* ASSINATURAS COM IMAGENS MAIS LARGAS (RETANGULARES) */
         .assinaturas-finais {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px solid #000;
+            margin-top: 30px;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
         }
         .assinatura-bloco {
             text-align: center;
-            margin-bottom: 45px;
-        }
-        .assinatura-bloco:last-child {
-            margin-bottom: 0;
+            flex: 1;
+            min-width: 220px;
         }
         .assinatura-foto {
             display: flex;
@@ -317,7 +322,7 @@
             margin-bottom: 15px;
         }
         .assinatura-foto img {
-            width: 150px;
+            width: 200px;
             height: 150px;
             object-fit: cover;
             border: 1px solid #ccc;
@@ -325,16 +330,16 @@
             display: block;
         }
         body.mobile-mode .assinatura-foto img {
-            width: 100px;
-            height: 100px;
+            width: 160px;
+            height: 120px;
         }
         .assinatura-linha {
-            width: 250px;
+            width: 220px;
             border-bottom: 1px solid #000;
             margin: 0 auto 8px auto;
         }
         body.mobile-mode .assinatura-linha {
-            width: 200px;
+            width: 180px;
         }
         .assinatura-nome {
             font-size: 16px;
@@ -595,15 +600,6 @@
                     <span class="inciso-item"><strong>III</strong> – a União coordenará políticas nacionais voltadas à integração cultural e social.</span>
                     <span class="paragrafo-item"><strong>§1º</strong> Nenhuma Partitura poderá romper a unidade federativa da República.</span>
                     <span class="paragrafo-item"><strong>§2º</strong> A autonomia federativa observará os princípios desta Constituição.</span>
-                    
-                    <div class="composicao-label">Composição Legislativa nº 7-B</div>
-                    <span class="artigo-texto"><strong>Art. 7º-B</strong> O Presidente da República exercerá:</span>
-                    <span class="inciso-item"><strong>I</strong> – a chefia de Estado;</span>
-                    <span class="inciso-item"><strong>II</strong> – a chefia de Governo;</span>
-                    <span class="inciso-item"><strong>III</strong> – a coordenação da administração federal;</span>
-                    <span class="inciso-item"><strong>IV</strong> – a representação nacional perante outras nações.</span>
-                    <span class="paragrafo-item"><strong>§1º</strong> O Presidente será eleito pelo voto popular direto.</span>
-                    <span class="paragrafo-item"><strong>§2º</strong> O exercício presidencial deverá respeitar os princípios democráticos, constitucionais e culturais da República.</span>
                 </div>
                 <div class="rodape-numero">6</div>
             </div>
@@ -613,6 +609,15 @@
         <div class="pagina">
             <div class="conteudo-pagina">
                 <div class="texto-principal">
+                    <div class="composicao-label">Composição Legislativa nº 7-B</div>
+                    <span class="artigo-texto"><strong>Art. 7º-B</strong> O Presidente da República exercerá:</span>
+                    <span class="inciso-item"><strong>I</strong> – a chefia de Estado;</span>
+                    <span class="inciso-item"><strong>II</strong> – a chefia de Governo;</span>
+                    <span class="inciso-item"><strong>III</strong> – a coordenação da administração federal;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a representação nacional perante outras nações.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O Presidente será eleito pelo voto popular direto.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O exercício presidencial deverá respeitar os princípios democráticos, constitucionais e culturais da República.</span>
+                    
                     <div class="composicao-label">Composição Legislativa nº 8</div>
                     <span class="artigo-texto"><strong>Art. 8º</strong> A organização político-administrativa da República compreende:</span>
                     <span class="inciso-item"><strong>I</strong> – a União;</span>
@@ -693,7 +698,7 @@
             </div>
         </div>
 
-        <!-- PÁGINA 9: ASSINATURAS COM FOTOS RETANGULARES -->
+        <!-- PÁGINA 9: ASSINATURAS COM IMAGENS MAIS LARGAS (200x150) -->
         <div class="pagina" id="assinaturas">
             <div class="conteudo-pagina">
                 <div class="texto-principal">
