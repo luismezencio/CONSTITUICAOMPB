@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constituição da MPB | República Presidencialista da Música Popular Brasileira</title>
+    <style>
+        /* ESTILO PRETO E BRANCO – FORMATO CIENTÍFICO / OFICIAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: 'Times New Roman', 'Georgia', 'Cambria', serif;
+            color: #000000;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        /* cada página tem tamanho fixo 1414x2000px */
+        .pagina {
+            width: 1414px;
+            min-height: 2000px;
+            background: white;
+            margin: 1.5rem auto;
+            position: relative;
+            box-shadow: 0 0 0 1px #eaeaea; /* borda cinza muito suave para referência visual, sem cor marrom */
+            page-break-after: always;
+            break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* capas com imagem ocupando a página inteira */
+        .capa-imagem {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        .capa-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* conteúdo textual (páginas com texto da constituição) */
+        .conteudo-pagina {
+            padding: 2.8rem 3.5rem 3rem 3.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: white;
+        }
+
+        /* área do texto principal para empurrar rodapé */
+        .texto-principal {
+            flex: 1;
+        }
+
+        /* RODAPÉ COM NUMERAÇÃO – no final da página, alinhado à direita */
+        .rodape-numero {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: right;
+            font-size: 1rem;
+            font-family: 'Times New Roman', serif;
+            border-top: 1px solid #ccc;
+            color: #000;
+        }
+
+        /* SUMÁRIO – estilo sóbrio */
+        .sumario {
+            margin: 0 0 1.5rem 0;
+            padding: 0;
+        }
+        .sumario h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            margin: 0.5rem 0 1.8rem 0;
+            border-bottom: 2px solid #000;
+            display: inline-block;
+            width: auto;
+            letter-spacing: 1.5px;
+            padding-bottom: 0.5rem;
+        }
+        .sumario-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+        .sumario-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            font-size: 1.3rem;
+            font-family: 'Times New Roman', serif;
+            padding: 0.2rem 0;
+        }
+        .sumario-item a {
+            text-decoration: none;
+            color: #000;
+        }
+        .sumario-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* TIPOGRAFIA DOS TEXTOS – QUEBRAS DE LINHA OBRIGATÓRIAS */
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 1rem 0 1.2rem 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 2rem;
+            margin: 1.8rem 0 0.6rem 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+        h3 {
+            font-size: 1.7rem;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+        .preambulo-titulo {
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: bold;
+            margin: 1rem 0 1rem;
+        }
+        .preambulo {
+            margin: 1rem 0 1.5rem;
+            padding: 1rem 1.2rem;
+            background: transparent;
+            border-left: 3px solid #aaa;
+            text-align: justify;
+            font-size: 1.32rem;
+            line-height: 1.55;
+        }
+        /* artigo e parágrafos: cada elemento em nova linha */
+        .artigo-item {
+            margin: 1.2rem 0 0.2rem 0;
+        }
+        .artigo-numero {
+            font-weight: 700;
+            font-size: 1.35rem;
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .artigo-texto {
+            font-size: 1.32rem;
+            text-align: justify;
+            display: block;
+            margin-left: 0;
+            margin-bottom: 0.4rem;
+        }
+        .paragrafo-item {
+            font-size: 1.32rem;
+            margin-left: 1.8rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+        .inciso-item {
+            font-size: 1.32rem;
+            margin-left: 2.8rem;
+            margin-top: 0.3rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+        .paragrafo-unico {
+            margin-left: 1.8rem;
+            font-size: 1.32rem;
+            margin-top: 0.4rem;
+            display: block;
+        }
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+        .assinatura {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1.2rem;
+            border-top: 1px solid #000;
+            padding-top: 1.5rem;
+            font-style: normal;
+        }
+        /* espaçamento consistente */
+        .separador-titulo {
+            margin-top: 0.8rem;
+        }
+        @media (max-width: 1450px) {
+            body {
+                transform: scale(0.98);
+                transform-origin: top center;
+            }
+            .pagina {
+                width: 100%;
+                max-width: 1414px;
+                min-height: auto;
+            }
+        }
+        @media (max-width: 1000px) {
+            .conteudo-pagina {
+                padding: 1.8rem;
+            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            .artigo-texto, .paragrafo-item, .inciso-item, .preambulo { font-size: 1.1rem; }
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .pagina {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAPA 1 (imagem real anexada) -->
+    <div class="pagina">
+        <div class="capa-imagem">
+            <img src="capa1.PNG" alt="Capa 1 - Constituição Geral das Composições Populares Brasileiras" onerror="this.alt='CAPA1: CONSTITUIÇÃO GERAL DAS COMPOSIÇÕES POPULARES BRASILEIRAS';">
+        </div>
+    </div>
+
+    <!-- CAPA 2 (imagem real anexada) -->
+    <div class="pagina">
+        <div class="capa-imagem">
+            <img src="capa2.jpeg" alt="Capa 2 - Constituição Geral das Composições Populares Brasileiras" onerror="this.alt='CAPA2: CONSTITUIÇÃO GERAL - DAS COMPOSIÇÕES POPULARES BRASILEIRAS';">
+        </div>
+    </div>
+
+    <!-- PÁGINA 1: SUMÁRIO -->
+    <div class="pagina">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <div class="sumario">
+                    <div style="text-align: center;"><h2>SUMÁRIO</h2></div>
+                    <div class="sumario-lista">
+                        <div class="sumario-item"><a href="#preambulo">PREÂMBULO</a><span>1</span></div>
+                        <div class="sumario-item"><a href="#tituloI">TÍTULO I – PRINCÍPIOS FUNDAMENTAIS</a><span>2</span></div>
+                        <div class="sumario-item"><a href="#comp0">Composição Legislativa nº 0</a><span>2</span></div>
+                        <div class="sumario-item"><a href="#comp1">Composição Legislativa nº 1 a 3</a><span>3</span></div>
+                        <div class="sumario-item"><a href="#tituloII">TÍTULO II – DIREITOS E GARANTIAS</a><span>4</span></div>
+                        <div class="sumario-item"><a href="#tituloIII">TÍTULO III – ORGANIZAÇÃO DO ESTADO</a><span>5</span></div>
+                        <div class="sumario-item"><a href="#tituloIV">TÍTULO IV – CULTURA E PATRIMÔNIO MUSICAL</a><span>6</span></div>
+                        <div class="sumario-item"><a href="#tituloV">TÍTULO V – DISPOSIÇÕES GERAIS</a><span>7</span></div>
+                        <div class="sumario-item"><a href="#promulgacao">PROMULGAÇÃO</a><span>7</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rodape-numero">1</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: PREÂMBULO + INÍCIO TÍTULO I (até antes da comp 0) -->
+    <div class="pagina" id="preambulo">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <h1>CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA PRESIDENCIALISTA DA MPB</h1>
+                <div class="preambulo-titulo">PREÂMBULO</div>
+                <div class="preambulo">
+                    Nós, representantes do povo da República Federativa Presidencialista da MPB, reunidos em Assembleia Nacional Constituinte, inspirados nos princípios da democracia, da soberania popular, da liberdade artística e da diversidade cultural brasileira, promulgamos a presente Constituição Musical.<br><br>
+                    Fundada nos ideais de harmonia, participação popular e valorização da Música Popular Brasileira, esta Constituição estabelece um Estado democrático destinado a assegurar os direitos sociais, culturais e políticos da população, garantindo a separação dos poderes, a dignidade humana e a promoção da cultura como instrumento de cidadania.<br><br>
+                    Sob o lema “Ordem, Progresso e Música”, instituímos um Estado pautado pela justiça social, pela liberdade de expressão e pelo reconhecimento da arte como patrimônio essencial da nação.
+                </div>
+                <h2>TÍTULO I</h2>
+                <h3>DOS PRINCÍPIOS FUNDAMENTAIS</h3>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa Preliminar</span>
+                    <span class="artigo-texto"><strong>Art. 1º</strong> A República Federativa Presidencialista da MPB adota como forma de Estado a Federação, como forma de governo a República e como sistema de governo o Presidencialismo.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> A Federação organiza-se pela união indissolúvel das Partituras e Bemóis.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> A República fundamenta-se na soberania popular e na eleição periódica dos representantes do povo.</span>
+                    <span class="paragrafo-item"><strong>§3º</strong> O Presidencialismo estabelece o Presidente da República como Chefe de Estado e Chefe de Governo.</span>
+                    <span class="paragrafo-item"><strong>§4º</strong> O mandato presidencial será exercido conforme os princípios democráticos estabelecidos nesta Constituição.</span>
+                </div>
+                <hr>
+            </div>
+            <div class="rodape-numero">2</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3: Composição Legislativa nº 0 e Composição nº 1 até art. 3º -->
+    <div class="pagina" id="comp0">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 0</span>
+                    <span class="artigo-texto"><strong>Art. 1º-A</strong> O sistema eleitoral da República fundamenta-se na participação popular, na liberdade democrática e na valorização da cultura nacional.</span>
+                    <span class="inciso-item"><strong>I</strong> – o processo eleitoral será inspirado simbolicamente na estrutura do Hino Nacional da República;</span>
+                    <span class="inciso-item"><strong>II</strong> – cada etapa eleitoral representará um compasso da manifestação democrática popular;</span>
+                    <span class="inciso-item"><strong>III</strong> – os períodos eleitorais serão chamados de Festivais Democráticos;</span>
+                    <span class="inciso-item"><strong>IV</strong> – debates eleitorais deverão garantir igualdade de participação entre os candidatos;</span>
+                    <span class="inciso-item"><strong>V</strong> – campanhas eleitorais deverão incentivar manifestações culturais e artísticas populares.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O voto é universal, direto, secreto e periódico.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O Estado garantirá ampla participação popular nos processos políticos e eleitorais.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 1</span>
+                    <span class="artigo-texto"><strong>Art. 1º</strong> A República Federativa Presidencialista da MPB constitui-se em Estado Democrático de Direito e tem como fundamentos:</span>
+                    <span class="inciso-item"><strong>I</strong> – a soberania popular;</span>
+                    <span class="inciso-item"><strong>II</strong> – a cidadania;</span>
+                    <span class="inciso-item"><strong>III</strong> – a dignidade da pessoa humana;</span>
+                    <span class="inciso-item"><strong>IV</strong> – os valores sociais da cultura e da arte;</span>
+                    <span class="inciso-item"><strong>V</strong> – o pluralismo cultural;</span>
+                    <span class="inciso-item"><strong>VI</strong> – a Música Popular Brasileira como patrimônio nacional.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> Todo poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos desta Constituição.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 2</span>
+                    <span class="artigo-texto"><strong>Art. 2º</strong> São poderes da União, independentes e harmônicos entre si:</span>
+                    <span class="inciso-item"><strong>I</strong> – o Legislativo;</span>
+                    <span class="inciso-item"><strong>II</strong> – o Executivo;</span>
+                    <span class="inciso-item"><strong>III</strong> – o Judiciário.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> Nenhum poder poderá concentrar competências que comprometam o equilíbrio institucional da República.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> Os poderes atuarão em cooperação para garantir a harmonia social e a estabilidade democrática.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 3</span>
+                    <span class="artigo-texto"><strong>Art. 3º</strong> Constituem objetivos fundamentais da República:</span>
+                    <span class="inciso-item"><strong>I</strong> – construir uma sociedade livre, justa, democrática e culturalmente acessível;</span>
+                    <span class="inciso-item"><strong>II</strong> – promover o acesso universal à arte, à educação e à cultura;</span>
+                    <span class="inciso-item"><strong>III</strong> – reduzir desigualdades sociais, regionais e culturais;</span>
+                    <span class="inciso-item"><strong>IV</strong> – preservar a diversidade musical brasileira;</span>
+                    <span class="inciso-item"><strong>V</strong> – incentivar a criatividade, a produção artística e a participação popular.</span>
+                </div>
+            </div>
+            <div class="rodape-numero">3</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 4: TÍTULO II (arts. 4º ao 7º) -->
+    <div class="pagina" id="tituloII">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <h2>TÍTULO II</h2>
+                <h3>DOS DIREITOS E GARANTIAS FUNDAMENTAIS</h3>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 4</span>
+                    <span class="artigo-texto"><strong>Art. 4º</strong> São garantidos a todos os cidadãos:</span>
+                    <span class="inciso-item"><strong>I</strong> – a liberdade de expressão artística, intelectual e cultural;</span>
+                    <span class="inciso-item"><strong>II</strong> – o acesso universal à cultura;</span>
+                    <span class="inciso-item"><strong>III</strong> – o direito à manifestação musical em espaços públicos, respeitados os limites da convivência social;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a livre produção e divulgação artística;</span>
+                    <span class="inciso-item"><strong>V</strong> – a proteção das manifestações culturais regionais.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> Nenhuma expressão artística poderá sofrer censura de natureza política, ideológica ou cultural.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O Estado protegerá artistas independentes e produções culturais populares.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 5</span>
+                    <span class="artigo-texto"><strong>Art. 5º</strong> A educação constitui direito de todos e dever do Estado.</span>
+                    <span class="inciso-item"><strong>I</strong> – a educação musical será componente essencial da formação cidadã;</span>
+                    <span class="inciso-item"><strong>II</strong> – o ensino público incentivará o conhecimento da Música Popular Brasileira e das culturas regionais;</span>
+                    <span class="inciso-item"><strong>III</strong> – o Estado garantirá acesso gratuito a instrumentos musicais e atividades culturais em instituições públicas.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> As escolas públicas deverão promover festivais, saraus e atividades culturais voltadas à integração social.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 6</span>
+                    <span class="artigo-texto"><strong>Art. 6º</strong> A saúde é direito social fundamental.</span>
+                    <span class="inciso-item"><strong>I</strong> – o Estado promoverá programas de musicoterapia na rede pública de saúde;</span>
+                    <span class="inciso-item"><strong>II</strong> – hospitais, centros terapêuticos e instituições de acolhimento poderão utilizar práticas artísticas como instrumento complementar de tratamento;</span>
+                    <span class="inciso-item"><strong>III</strong> – políticas públicas incentivarão o bem-estar social por meio da arte e da cultura.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 7</span>
+                    <span class="artigo-texto"><strong>Art. 7º</strong> Todos têm direito ao meio ambiente ecologicamente equilibrado e sonoramente harmonioso.</span>
+                    <span class="inciso-item"><strong>I</strong> – o Estado combaterá a poluição sonora;</span>
+                    <span class="inciso-item"><strong>II</strong> – eventos culturais deverão respeitar limites de convivência urbana;</span>
+                    <span class="inciso-item"><strong>III</strong> – serão incentivadas práticas sustentáveis em produções artísticas e eventos públicos.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> O patrimônio sonoro e cultural brasileiro será protegido pelo Estado.</span>
+                </div>
+            </div>
+            <div class="rodape-numero">4</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 5: TÍTULO III (arts. 7º-A ao 9º-B) -->
+    <div class="pagina" id="tituloIII">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <h2>TÍTULO III</h2>
+                <h3>DA ORGANIZAÇÃO DO ESTADO</h3>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 7-A</span>
+                    <span class="artigo-texto"><strong>Art. 7º-A</strong> A República organiza-se sob regime federativo, assegurando autonomia política, administrativa e cultural às Partituras.</span>
+                    <span class="inciso-item"><strong>I</strong> – cada Partitura poderá preservar suas manifestações culturais próprias;</span>
+                    <span class="inciso-item"><strong>II</strong> – os Bemóis possuirão autonomia administrativa local;</span>
+                    <span class="inciso-item"><strong>III</strong> – a União coordenará políticas nacionais voltadas à integração cultural e social.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> Nenhuma Partitura poderá romper a unidade federativa da República.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> A autonomia federativa observará os princípios desta Constituição.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 7-B</span>
+                    <span class="artigo-texto"><strong>Art. 7º-B</strong> O Presidente da República exercerá:</span>
+                    <span class="inciso-item"><strong>I</strong> – a chefia de Estado;</span>
+                    <span class="inciso-item"><strong>II</strong> – a chefia de Governo;</span>
+                    <span class="inciso-item"><strong>III</strong> – a coordenação da administração federal;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a representação nacional perante outras nações.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O Presidente será eleito pelo voto popular direto.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> O exercício presidencial deverá respeitar os princípios democráticos, constitucionais e culturais da República.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 8</span>
+                    <span class="artigo-texto"><strong>Art. 8º</strong> A organização político-administrativa da República compreende:</span>
+                    <span class="inciso-item"><strong>I</strong> – a União;</span>
+                    <span class="inciso-item"><strong>II</strong> – as Partituras;</span>
+                    <span class="inciso-item"><strong>III</strong> – os Bemóis.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> As Partituras constituem unidades federativas autônomas.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> Os Bemóis correspondem às divisões municipais responsáveis pela administração local.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 9</span>
+                    <span class="artigo-texto"><strong>Art. 9º</strong> A capital federal é Salvador, reconhecida como Clave da Música Estatal.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> A capital simboliza a diversidade cultural brasileira e a valorização histórica da Música Popular Brasileira.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 9-A</span>
+                    <span class="artigo-texto"><strong>Art. 9º-A</strong> O Poder Legislativo será exercido pela Assembleia Nacional das Composições.</span>
+                    <span class="inciso-item"><strong>I</strong> – compete ao Legislativo elaborar as Composições Legislativas;</span>
+                    <span class="inciso-item"><strong>II</strong> – os representantes serão eleitos democraticamente pelo povo;</span>
+                    <span class="inciso-item"><strong>III</strong> – as sessões legislativas poderão incorporar manifestações culturais e musicais nacionais.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 9-B</span>
+                    <span class="artigo-texto"><strong>Art. 9º-B</strong> O Poder Judiciário garantirá a preservação da ordem constitucional e dos direitos fundamentais.</span>
+                    <span class="inciso-item"><strong>I</strong> – compete ao Judiciário assegurar a harmonia institucional entre os poderes;</span>
+                    <span class="inciso-item"><strong>II</strong> – o Supremo Tribunal Harmônico constitui a instância máxima da Justiça Republicana;</span>
+                    <span class="inciso-item"><strong>III</strong> – nenhum cidadão será privado de seus direitos culturais e políticos sem o devido processo legal.</span>
+                </div>
+            </div>
+            <div class="rodape-numero">5</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 6: TÍTULO IV (arts. 10 ao 11) -->
+    <div class="pagina" id="tituloIV">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <h2>TÍTULO IV</h2>
+                <h3>DA CULTURA E DO PATRIMÔNIO MUSICAL</h3>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 10</span>
+                    <span class="artigo-texto"><strong>Art. 10.</strong> A Música Popular Brasileira constitui patrimônio imaterial da República.</span>
+                    <span class="inciso-item"><strong>I</strong> – o Estado promoverá políticas de preservação cultural;</span>
+                    <span class="inciso-item"><strong>II</strong> – ritmos regionais serão reconhecidos como expressões fundamentais da identidade nacional;</span>
+                    <span class="inciso-item"><strong>III</strong> – espaços culturais públicos deverão garantir acesso democrático à população.</span>
+                    <span class="paragrafo-item"><strong>§1º</strong> O Estado incentivará festivais, apresentações populares e manifestações culturais tradicionais.</span>
+                    <span class="paragrafo-item"><strong>§2º</strong> Nenhuma manifestação cultural brasileira poderá sofrer discriminação.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 10-A</span>
+                    <span class="artigo-texto"><strong>Art. 10-A</strong> O Estado incentivará a democratização dos meios de produção cultural.</span>
+                    <span class="inciso-item"><strong>I</strong> – artistas independentes terão proteção institucional;</span>
+                    <span class="inciso-item"><strong>II</strong> – espaços públicos deverão promover acesso gratuito à cultura;</span>
+                    <span class="inciso-item"><strong>III</strong> – políticas públicas estimularão manifestações culturais regionais.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 10-B</span>
+                    <span class="artigo-texto"><strong>Art. 10-B</strong> Constituem deveres culturais do Estado:</span>
+                    <span class="inciso-item"><strong>I</strong> – preservar arquivos históricos musicais;</span>
+                    <span class="inciso-item"><strong>II</strong> – incentivar pesquisas sobre a Música Popular Brasileira;</span>
+                    <span class="inciso-item"><strong>III</strong> – promover intercâmbio cultural entre as Partituras;</span>
+                    <span class="inciso-item"><strong>IV</strong> – valorizar compositores, intérpretes e artistas populares.</span>
+                </div>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 11</span>
+                    <span class="artigo-texto"><strong>Art. 11.</strong> O Estado fomentará:</span>
+                    <span class="inciso-item"><strong>I</strong> – a criação artística independente;</span>
+                    <span class="inciso-item"><strong>II</strong> – programas de incentivo à produção musical;</span>
+                    <span class="inciso-item"><strong>III</strong> – a democratização do acesso à arte;</span>
+                    <span class="inciso-item"><strong>IV</strong> – a preservação da memória musical nacional.</span>
+                </div>
+            </div>
+            <div class="rodape-numero">6</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 7: TÍTULO V + PROMULGAÇÃO -->
+    <div class="pagina" id="tituloV">
+        <div class="conteudo-pagina">
+            <div class="texto-principal">
+                <h2>TÍTULO V</h2>
+                <h3>DAS DISPOSIÇÕES GERAIS</h3>
+                <div class="artigo-item">
+                    <span class="artigo-numero">Composição Legislativa nº 12</span>
+                    <span class="artigo-texto"><strong>Art. 12.</strong> O lema nacional da República é “Ordem, Progresso e Música”.</span>
+                    <span class="paragrafo-unico"><strong>Parágrafo único.</strong> O lema representa a união entre estabilidade institucional, desenvolvimento social e valorização cultural.</span>
+                </div>
+                <div class="artigo-item" id="promulgacao">
+                    <span class="artigo-numero">Composição Legislativa nº 13</span>
+                    <span class="artigo-texto"><strong>Art. 13.</strong> Esta Constituição entra em vigor na data de sua promulgação.</span>
+                    <div class="assinatura">
+                        Sala das Composições Legislativas, Assembleia Nacional Constituinte da República Federativa Presidencialista da MPB.
+                    </div>
+                </div>
+            </div>
+            <div class="rodape-numero">7</div>
+        </div>
+    </div>
+</body>
+</html>
